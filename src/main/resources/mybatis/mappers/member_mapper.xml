@@ -23,6 +23,16 @@
     </insert>
 
 
+    <select id="selectMember" parameterType="com.office.miniBoard.member.MemberDto" resultType="com.office.miniBoard.member.MemberDto">
+        SELECT
+            m_id, m_pw
+        FROM
+            tbl_member
+        WHERE
+            m_id = #{m_id} and m_pw = #{m_pw}
+    </select>
+
+
 
 
 </mapper>

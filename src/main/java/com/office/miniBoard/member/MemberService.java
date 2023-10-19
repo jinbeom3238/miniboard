@@ -7,11 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Log4j2
-public class MemberService {
+public class MemberService implements IMemberService{
 
     final static public int DATABASE_COMMUNICATION_TROUBLE = -1;
     final static public int INSERT_FAIL_AT_DATABASE = 0;
     final static public int INSERT_SUCCESS_AT_DATABASE = 1;
+
+    final static public int LOGIN_SUCCESS = 1;
+    final static public int LOGIN_FAIL = 1;
 
     @Autowired
     IMemberDaoMapper iMemberDaoMapper;
@@ -54,10 +57,10 @@ public class MemberService {
 
     }
 
-    public int loginForm(MemberDto memberDto) {
+    public MemberDto loginForm(MemberDto memberDto) {
         log.info("loginForm()");
 
-        return 1;
+        return iMemberDaoMapper.selectMember(memberDto);
 
     }
 }

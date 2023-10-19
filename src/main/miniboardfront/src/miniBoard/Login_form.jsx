@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Create_account_form from './Create_account_form';
+import { useNavigate } from 'react-router-dom';
 
 function Login_form() {
     console.log('Login_form() CALLED!!');
+
+    const navigate = useNavigate;
 
     const [formData, setFormData] = useState({
         m_id: '',
@@ -15,6 +19,10 @@ function Login_form() {
             ...formData,
             [name]: value
         });
+    };
+
+    const navigateLoginSuccess = () => {
+        navigate('/');
     };
 
     const handleSubmit = async (e) => {
@@ -42,11 +50,11 @@ function Login_form() {
                 <label>Password:</label>
                 <input type="password" name="m_pw" value={formData.m_pw} onChange={handleChange} />
             </div>
-            <button type="submit">로그인</button>
+            <button type="submit" onoClick={navigateLoginSuccess}>로그인</button>
         </form>
     );
 
 
 }
 
-export default Create_account_form;
+export default Login_form;

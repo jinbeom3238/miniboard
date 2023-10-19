@@ -8,4 +8,6 @@ public interface IMemberDaoMapper {
     boolean isMember(String mId);
 
     int insertMember(MemberDto memberDto);
+
+    MemberDto selectMember(MemberDto memberDto);
 }
